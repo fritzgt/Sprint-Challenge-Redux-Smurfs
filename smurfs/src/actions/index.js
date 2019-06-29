@@ -1,6 +1,5 @@
 //importing action for the API call
 import axios from "axios";
-import { bindActionCreators } from "redux";
 
 /* 
   Action Types Go Here!

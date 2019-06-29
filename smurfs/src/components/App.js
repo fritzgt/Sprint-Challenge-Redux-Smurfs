@@ -12,6 +12,9 @@ import { connect } from "react-redux";
 //importing action
 import { getSmurfs } from "../actions";
 
+//importing form
+import Form from "./Form";
+
 class App extends Component {
   componentDidMount() {
     this.props.getSmurfs();
@@ -20,10 +23,10 @@ class App extends Component {
     return (
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your Redux version of Smurfs!</div>
+        <Form />
         <h2>List of Smurfs</h2>
         {this.props.smurfs.map(smurf => (
-          <div key={smurf.id}>
+          <div key={smurf.id} className="card">
             <h4>{smurf.name}</h4>
             <p>{smurf.age}</p>
             <p>{smurf.height}</p>

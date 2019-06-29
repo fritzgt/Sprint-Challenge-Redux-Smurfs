@@ -1,5 +1,3 @@
-import { bindActionCreators } from "redux";
-
 /*
   Be sure to import in all of the action types from `../actions`
 */
