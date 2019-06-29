@@ -41,6 +41,6 @@ const mapStateToProps = state => {
 };
 
 export default connect(
-  { getSmurfs },
-  mapStateToProps
+  mapStateToProps,
+  { getSmurfs }
 )(App);
