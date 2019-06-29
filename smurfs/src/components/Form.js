@@ -1,5 +1,9 @@
 import React from "react";
 
+import { addSmurf } from "../actions";
+
+import { connect } from "react-redux";
+
 class Form extends React.Component {
   state = {
     name: "",
@@ -7,13 +11,11 @@ class Form extends React.Component {
     height: ""
   };
 
-  //capturing input and setting to state
   changeHandler = e => {
     console.log(e.target.value);
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  //sending state to redux
   submitHandler = e => {
     e.preventDefault();
     this.props.addSmurf(this.state);
@@ -26,7 +28,7 @@ class Form extends React.Component {
 
   render() {
     return (
-      <form>
+      <form onSubmit={this.submitHandler}>
         <input
           placeholder="Name"
           name="name"
@@ -38,7 +40,7 @@ class Form extends React.Component {
           placeholder="Age"
           name="age"
           type="number"
-          value={this.state.number}
+          value={this.state.age}
           onChange={this.changeHandler}
         />
         <input
@@ -48,10 +50,13 @@ class Form extends React.Component {
           value={this.state.height}
           onChange={this.changeHandler}
         />
-        <button>Add New</button>
+        <button>Create</button>
       </form>
     );
   }
 }
 
-export default Form;
+export default connect(
+  null,
+  { addSmurf }
+)(Form);

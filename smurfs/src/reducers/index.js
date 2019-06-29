@@ -4,7 +4,8 @@
 import {
   FETCH_SMURFS_START,
   FETCH_SMURFS_SUCCESS,
-  FETCH_SMURFS_ERROR
+  FETCH_SMURFS_ERROR,
+  ADD_SMURF
 } from "../actions";
 
 /*
@@ -28,6 +29,7 @@ const initialState = {
 */
 
 const reducer = (state = initialState, action) => {
+  // console.log("Reducer", action);
   switch (action.type) {
     case FETCH_SMURFS_START:
       return {
@@ -35,11 +37,18 @@ const reducer = (state = initialState, action) => {
         fetchingSmurfs: true,
         error: ""
       };
+
     case FETCH_SMURFS_SUCCESS:
+      console.log("From Reducer Create", action.payload);
       return {
         ...state,
         fetchingSmurfs: false,
         smurfs: action.payload
+      };
+    case ADD_SMURF:
+      return {
+        ...state,
+        smurfs: [...state.smurfs, action.payload]
       };
     case FETCH_SMURFS_ERROR:
       return {

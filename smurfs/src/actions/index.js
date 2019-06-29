@@ -33,3 +33,13 @@ export const getSmurfs = () => dispatch => {
       dispatch({ type: FETCH_SMURFS_ERROR, payload: err });
     });
 };
+
+//Creating new smurfs with post
+
+export const addSmurf = newSurf => dispatch => {
+  dispatch({ type: FETCH_SMURFS_START });
+  axios.post("http://localhost:3333/smurfs", newSurf).then(res => {
+    console.log("CREATING NEW SMURF", res.data);
+    dispatch({ type: ADD_SMURF, payload: res });
+  });
+};
