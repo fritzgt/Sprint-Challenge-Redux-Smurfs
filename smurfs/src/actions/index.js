@@ -36,10 +36,10 @@ export const getSmurfs = () => dispatch => {
 
 //Creating new smurfs with post
 
-export const addSmurf = newSurf => dispatch => {
+export const addSmurf = newSmurf => dispatch => {
   dispatch({ type: FETCH_SMURFS_START });
-  axios.post("http://localhost:3333/smurfs", newSurf).then(res => {
+  axios.post("http://localhost:3333/smurfs", newSmurf).then(res => {
     console.log("CREATING NEW SMURF", res.data);
-    dispatch({ type: ADD_SMURF, payload: res });
+    dispatch({ type: ADD_SMURF, payload: res.data });
   });
 };

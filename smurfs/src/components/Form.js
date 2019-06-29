@@ -17,7 +17,7 @@ class Form extends React.Component {
   };
 
   submitHandler = e => {
-    // e.preventDefault();
+    e.preventDefault();
     this.props.addSmurf(this.state);
     this.setState({
       name: "",

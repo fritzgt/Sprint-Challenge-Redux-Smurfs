@@ -46,7 +46,10 @@ const reducer = (state = initialState, action) => {
         smurfs: action.payload
       };
     case ADD_SMURF:
-      return Object.assign({}, state, action.payload);
+      return {
+        ...state,
+        smurfs: action.payload
+      };
     case FETCH_SMURFS_ERROR:
       return {
         ...state,
@@ -59,3 +62,5 @@ const reducer = (state = initialState, action) => {
 };
 
 export default reducer;
+
+// Object.assign({}, state, action.payload);
