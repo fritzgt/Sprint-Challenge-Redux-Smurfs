@@ -10,7 +10,7 @@ import "./App.css";
 //connecting app to redux
 import { connect } from "react-redux";
 //importing action
-import { getSmurfs } from "../actions";
+import { getSmurfs, deleteSmurf } from "../actions";
 
 //importing form
 import Form from "./Form";
@@ -19,6 +19,7 @@ class App extends Component {
   componentDidMount() {
     this.props.getSmurfs();
   }
+
   render() {
     return (
       <div className="App">
@@ -30,6 +31,17 @@ class App extends Component {
             <h4>{smurf.name}</h4>
             <p>{smurf.age}</p>
             <p>{smurf.height}</p>
+            <button
+              onClick={e => {
+                e.preventDefault();
+
+                /* console.log("Deleting", smurf.id); */
+
+                this.props.deleteSmurf(smurf.id);
+              }}
+            >
+              Delete
+            </button>
           </div>
         ))}
       </div>
@@ -45,5 +57,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getSmurfs }
+  { getSmurfs, deleteSmurf }
 )(App);
